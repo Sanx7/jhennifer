@@ -53,9 +53,6 @@
             text-align: center;
         }
 
-       
-        }
-
         .btn {
             background: var(--primary-pink);
             color: white;
@@ -99,11 +96,28 @@
     
     <h1 class="header-love">Eu te amo, Jhennifer</h1>
     
-<iframe width="0" height="0" src="https://www.youtube.com/embed/jvLKWg0lD6c?autoplay=1&mute=0" frameborder="0" allow="autoplay"></iframe>
+    <iframe id="musica" width="0" height="0" 
+        src="https://www.youtube.com/embed/jvLKWg0lD6c?enablejsapi=1&autoplay=1&mute=0&loop=1&playlist=jvLKWg0lD6c" 
+        frameborder="0" allow="autoplay">
+    </iframe>
     
     <div class="card">
         <h3 style="margin-top:0">Nosso Tempo Juntos ⏳</h3>
         <div id="timer">Calculando...</div>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-top:0">Desafio para Você 🧠</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 15px;">Será que você consegue acertar?</p>
+        
+        <script>(function(q,u,i,z,r){z=q.createElement(u),r=q.getElementsByTagName(u)[0];z.async=1;z.src=i;r.parentNode.insertBefore(z,r);})(document,'script','https://pt.quizur.com/js/embedder.js');</script>
+        <ins class="quizurembed" data-id="trivia/quiz-extremamente-dificil-impossivel-1rthb"></ins>
+        
+        <div style="text-align:center; margin-top:20px">
+            <a href="https://pt.quizur.com" target="_blank" style="color:#ffb3c1; text-decoration: none; font-size: 0.8rem;">
+                <img src="https://pt.quizur.com/favicon-32x32.png" alt="Quizur Logo" style="width: 15px; vertical-align: middle;"/> Criado no Quizur
+            </a>
+        </div>
     </div>
 
     <div class="card">
@@ -116,20 +130,37 @@
         <p style="margin: 0;">Ache o segredo... <span class="gatinho-escondido" onclick="acharGatinho()">🐱</span></p>
     </div>
 
-    <button class="btn" style="background:#c9184a" onclick="chuva('❤️')">ENVIAR UM BEIJO 💋</button>
+    <button class="btn" style="background:#c9184a" onclick="chuva('❤️'); tocarMusica();">ENVIAR UM BEIJO 💋</button>
 
 </div>
 
 <script>
-    const dataInicio = new Date(2023, 4, 12, 20, 0, 0); 
+    // Função para tocar a música
+    function tocarMusica() {
+        const iframe = document.getElementById('musica');
+        if(iframe.contentWindow) {
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }
+    }
+    document.body.addEventListener('click', tocarMusica, { once: true });
+
+    // --- DATA ATUALIZADA: 11/04/2026 às 23:04 ---
+    const dataInicio = new Date(2026, 3, 11, 23, 4, 0); 
 
     function atualizarTimer() {
         const agora = new Date();
         const diff = agora - dataInicio;
+
+        if (diff < 0) {
+            document.getElementById("timer").innerHTML = "Aguardando o momento...";
+            return;
+        }
+
         const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
         const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const mins = Math.floor((diff / 1000 / 60) % 60);
         const secs = Math.floor((diff / 1000) % 60);
+        
         document.getElementById("timer").innerHTML = `${dias}d ${horas}h ${mins}m ${secs}s`;
     }
     
@@ -154,6 +185,7 @@
         const r = Math.floor(Math.random() * mensagens.length);
         msgBox.innerText = mensagens[r];
         chuva('✨');
+        tocarMusica();
     }
 
     function chuva(emoji) {
@@ -172,6 +204,7 @@
     function acharGatinho() {
         alert("Miau! 🐱 Você encontrou o gatinho do amor!");
         chuva('🐱');
+        tocarMusica();
     }
 </script>
 
