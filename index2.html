@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Jhennifer ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --love-red: #e60000;
+            --bg-rosa-bebe: #fde2e4;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background-color: var(--bg-rosa-bebe);
+            background-image: radial-gradient(#ffb3c1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #590d22;
+            padding: 20px 0 60px 0;
+            overflow-x: hidden;
+        }
+
+        .container { width: 92%; max-width: 450px; }
+
+        .header-love {
+            font-family: 'Tangerine', cursive;
+            font-size: 4.5rem;
+            color: var(--love-red);
+            text-align: center;
+            margin: 10px 0 20px 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 0.9;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .spotify-container {
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background: #282828; /* Fundo escuro para o player */
+            min-height: 80px;
+        }
+
+        .btn {
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            width: 100%;
+            margin: 8px 0;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        #timer { font-weight: bold; font-size: 1.4rem; color: var(--primary-pink); }
+        
+        #msg-box { 
+            min-height: 70px; 
+            font-style: italic; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .particle {
+            position: fixed; top: -10%; user-select: none; pointer-events: none;
+            z-index: 9999; animation: fall linear forwards;
+        }
+
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        .gatinho-escondido { opacity: 0.3; cursor: pointer; transition: 0.3s; }
+        .gatinho-escondido:hover { opacity: 1; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <h1 class="header-love">Eu te amo, Jhennifer</h1>
+
+    <div class="spotify-container">
+        <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/track/5In98K0WAnu41XUoW782QY?utm_source=generator" 
+            width="100%" height="80" frameBorder="0" allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+        </iframe>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-top:0">Nosso Tempo Juntos ⏳</h3>
+        <div id="timer">Calculando...</div>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-top:0">Um mimo para você 💌</h3>
+        <div id="msg-box">Clique abaixo para uma surpresa...</div>
+        <button class="btn" onclick="sortearMensagem()">Ver Frase</button>
+    </div>
+
+    <div class="card" style="padding: 15px;">
+        <p style="margin: 0;">Ache o segredo... <span class="gatinho-escondido" onclick="acharGatinho()">🐱</span></p>
+    </div>
+
+    <button class="btn" style="background:#c9184a" onclick="chuva('❤️')">ENVIAR UM BEIJO 💋</button>
+
+</div>
+
+<script>
+    const dataInicio = new Date(2023, 4, 12, 20, 0, 0); 
+
+    function atualizarTimer() {
+        const agora = new Date();
+        const diff = agora - dataInicio;
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / 1000 / 60) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+        document.getElementById("timer").innerHTML = `${dias}d ${horas}h ${mins}m ${secs}s`;
+    }
+    
+    setInterval(atualizarTimer, 1000);
+    atualizarTimer();
+
+    const mensagens = [
+        "Te amo muito minha princesa",
+        "Você ilumina meus dias",
+        "Quero você só pra mim",
+        "Tudo em você é perfeito",
+        "Obrigado por estar comigo",
+        "Te amo sua safada",
+        "Você é inspiradora",
+        "Você me faz tão bem",
+        "Amo o seu jeito de cuidar de mim",
+        "Você é meu pensamento favorito, Jhenni"
+    ];
+
+    function sortearMensagem() {
+        const msgBox = document.getElementById("msg-box");
+        const r = Math.floor(Math.random() * mensagens.length);
+        msgBox.innerText = mensagens[r];
+        chuva('✨');
+    }
+
+    function chuva(emoji) {
+        for(let i=0; i<30; i++) {
+            const p = document.createElement("div");
+            p.classList.add("particle");
+            p.innerText = emoji;
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.animationDuration = (Math.random() * 2 + 2) + "s";
+            p.style.fontSize = (Math.random() * 20 + 10) + "px";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 4000);
+        }
+    }
+
+    function acharGatinho() {
+        alert("Miau! 🐱 Você encontrou o gatinho do amor!");
+        chuva('🐱');
+    }
+</script>
+
+</body>
+</html>
