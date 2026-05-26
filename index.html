@@ -14,6 +14,37 @@
             --glass: rgba(255, 255, 255, 0.9);
         }
 
+<style>
+    .botao-galeria {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(45deg, #ff5252, #d32f2f); /* Degradê vermelho */
+        border-radius: 50px; /* Bordas bem arredondadas */
+        box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); /* Sombra suave vermelha */
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-family: sans-serif;
+    }
+
+    /* Efeito ao passar o mouse */
+    .botao-galeria:hover {
+        transform: translateY(-3px); /* Ele sobe um pouquinho */
+        box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+        background: linear-gradient(45deg, #ff1744, #b71c1c);
+    }
+
+    /* Efeito ao clicar */
+    .botao-galeria:active {
+        transform: translateY(1px); /* Ele desce como se fosse um botão real */
+    }
+</style>
+        
         body {
             background-color: var(--bg-rosa-bebe);
             background-image: radial-gradient(#ffb3c1 0.5px, transparent 0.5px);
@@ -134,6 +165,13 @@
 
 </div>
 
+<div style="text-align: center; margin-top: 50px;">
+    <a href="galeria.html" class="botao-galeria">
+        ❤ Ir para nossa galeria
+    </a>
+</div>
+
+    
 <script>
     // Função para tocar a música
     function tocarMusica() {
