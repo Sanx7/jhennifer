@@ -14,37 +14,38 @@
             --glass: rgba(255, 255, 255, 0.9);
         }
 
-<style>
-    .botao-galeria {
-        display: inline-block;
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        background: linear-gradient(45deg, #ff5252, #d32f2f); /* Degradê vermelho */
-        border-radius: 50px; /* Bordas bem arredondadas */
-        box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); /* Sombra suave vermelha */
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        font-family: sans-serif;
-    }
+        /* ESTILO DO BOTÃO DA GALERIA */
+        .botao-galeria {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff5252, #d32f2f);
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%; /* Para seguir o padrão dos outros botões */
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
 
-    /* Efeito ao passar o mouse */
-    .botao-galeria:hover {
-        transform: translateY(-3px); /* Ele sobe um pouquinho */
-        box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
-        background: linear-gradient(45deg, #ff1744, #b71c1c);
-    }
+        .botao-galeria:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+            background: linear-gradient(45deg, #ff1744, #b71c1c);
+        }
 
-    /* Efeito ao clicar */
-    .botao-galeria:active {
-        transform: translateY(1px); /* Ele desce como se fosse um botão real */
-    }
-</style>
-        
+        .botao-galeria:active {
+            transform: translateY(1px);
+        }
+
+        /* ESTILOS DA PÁGINA */
         body {
             background-color: var(--bg-rosa-bebe);
             background-image: radial-gradient(#ffb3c1 0.5px, transparent 0.5px);
@@ -162,27 +163,24 @@
     </div>
 
     <button class="btn" style="background:#c9184a" onclick="chuva('❤️'); tocarMusica();">ENVIAR UM BEIJO 💋</button>
-
-</div>
-
-<div style="text-align: center; margin-top: 50px;">
+    
     <a href="galeria.html" class="botao-galeria">
         ❤ Ir para nossa galeria
     </a>
+
 </div>
 
-    
 <script>
     // Função para tocar a música
     function tocarMusica() {
         const iframe = document.getElementById('musica');
-        if(iframe.contentWindow) {
+        if(iframe && iframe.contentWindow) {
             iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
         }
     }
     document.body.addEventListener('click', tocarMusica, { once: true });
 
-    // --- DATA ATUALIZADA: 11/04/2026 às 23:04 ---
+    // --- DATA ATUALIZADA: 11/04/2026 ---
     const dataInicio = new Date(2026, 3, 11, 23, 4, 0); 
 
     function atualizarTimer() {
