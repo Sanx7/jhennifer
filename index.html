@@ -12,6 +12,7 @@
             --love-red: #e60000;
             --bg-rosa-bebe: #fde2e4;
             --glass: rgba(255, 255, 255, 0.9);
+            --rosa-botao: #ff85a1; /* Cor para o botão da carta */
         }
 
         /* ESTILO DO BOTÃO DA GALERIA */
@@ -30,7 +31,7 @@
             border: none;
             cursor: pointer;
             font-family: 'Quicksand', sans-serif;
-            width: 100%; /* Para seguir o padrão dos outros botões */
+            width: 100%;
             box-sizing: border-box;
             margin-top: 10px;
         }
@@ -41,11 +42,34 @@
             background: linear-gradient(45deg, #ff1744, #b71c1c);
         }
 
-        .botao-galeria:active {
-            transform: translateY(1px);
+        /* NOVO ESTILO DO BOTÃO DA CARTA */
+        .botao-carta {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff85a1, #ff4d6d);
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 15px; /* Espaço entre os botões */
         }
 
-        /* ESTILOS DA PÁGINA */
+        .botao-carta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
+            background: linear-gradient(45deg, #ff7096, #ff0a54);
+        }
+
+        /* MANTENDO SEUS ESTILOS ORIGINAIS */
         body {
             background-color: var(--bg-rosa-bebe);
             background-image: radial-gradient(#ffb3c1 0.5px, transparent 0.5px);
@@ -168,10 +192,14 @@
         ❤ Ir para nossa galeria
     </a>
 
+    <a href="carta.html" class="botao-carta">
+        ✉ Abrir minha cartinha especial
+    </a>
+
 </div>
 
 <script>
-    // Função para tocar a música
+    // Mantive todo o seu script original aqui para não quebrar nada!
     function tocarMusica() {
         const iframe = document.getElementById('musica');
         if(iframe && iframe.contentWindow) {
@@ -180,23 +208,19 @@
     }
     document.body.addEventListener('click', tocarMusica, { once: true });
 
-    // --- DATA ATUALIZADA: 11/04/2026 ---
     const dataInicio = new Date(2026, 3, 11, 23, 4, 0); 
 
     function atualizarTimer() {
         const agora = new Date();
         const diff = agora - dataInicio;
-
         if (diff < 0) {
             document.getElementById("timer").innerHTML = "Aguardando o momento...";
             return;
         }
-
         const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
         const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const mins = Math.floor((diff / 1000 / 60) % 60);
         const secs = Math.floor((diff / 1000) % 60);
-        
         document.getElementById("timer").innerHTML = `${dias}d ${horas}h ${mins}m ${secs}s`;
     }
     
