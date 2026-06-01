@@ -1,0 +1,94 @@
+/* Configurações da página */
+body {
+    background-color: #FFD1DC; /* Rosa Bebê */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+/* O corpo do envelope */
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #f08080; /* Um rosa mais escuro para o envelope */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* A folha/carta que está dentro */
+.letter {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background: white;
+    transition: transform 0.8s ease-in-out;
+    z-index: 2;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.letter img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Faz a foto caber inteira no papel */
+}
+
+/* Aba superior (a tampa) */
+.top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 110px solid #f08080; /* Cor da tampa */
+    transform-origin: top;
+    transition: transform 0.4s ease-in-out;
+    z-index: 4;
+}
+
+/* As abas laterais e inferior para dar profundidade */
+.front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-left: 150px solid #f49797;
+    border-right: 150px solid #f49797;
+    border-bottom: 110px solid #f07070;
+    z-index: 3;
+}
+
+/* ANIMAÇÃO AO PASSAR O MOUSE (HOVER) */
+
+.envelope-wrapper:hover .top {
+    transform: rotateX(180deg);
+    z-index: 1; /* A tampa vai para trás quando abre */
+}
+
+.envelope-wrapper:hover .letter {
+    transform: translateY(-130px); /* A carta sobe */
+    z-index: 5; /* A carta fica na frente de tudo */
+}
+
+.instrucao {
+    margin-top: 50px;
+    color: #d17a7a;
+    font-weight: bold;
+}
