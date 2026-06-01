@@ -12,7 +12,7 @@
             --love-red: #e60000;
             --bg-rosa-bebe: #fde2e4;
             --glass: rgba(255, 255, 255, 0.9);
-            --rosa-botao: #ff85a1; /* Cor para o botão da carta */
+            --rosa-botao: #ff85a1; 
         }
 
         /* ESTILO DO BOTÃO DA GALERIA */
@@ -60,7 +60,7 @@
             font-family: 'Quicksand', sans-serif;
             width: 100%;
             box-sizing: border-box;
-            margin-top: 15px; /* Espaço entre os botões */
+            margin-top: 15px; 
         }
 
         .botao-carta:hover {
@@ -69,7 +69,6 @@
             background: linear-gradient(45deg, #ff7096, #ff0a54);
         }
 
-        /* MANTENDO SEUS ESTILOS ORIGINAIS */
         body {
             background-color: var(--bg-rosa-bebe);
             background-image: radial-gradient(#ffb3c1 0.5px, transparent 0.5px);
@@ -152,10 +151,10 @@
     
     <h1 class="header-love">Eu te amo, Jhennifer</h1>
     
-    <iframe id="musica" width="0" height="0" 
-        src="https://www.youtube.com/embed/jvLKWg0lD6c?enablejsapi=1&autoplay=1&mute=0&loop=1&playlist=jvLKWg0lD6c" 
-        frameborder="0" allow="autoplay">
-    </iframe>
+    <audio id="musica" loop>
+        <source src="musica.m4a" type="audio/mp4">
+        <source src="musica.m4a" type="audio/x-m4a">
+    </audio>
     
     <div class="card">
         <h3 style="margin-top:0">Nosso Tempo Juntos ⏳</h3>
@@ -199,13 +198,15 @@
 </div>
 
 <script>
-    // Mantive todo o seu script original aqui para não quebrar nada!
+    // Função atualizada para tocar o arquivo m4a
     function tocarMusica() {
-        const iframe = document.getElementById('musica');
-        if(iframe && iframe.contentWindow) {
-            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-        }
+        const player = document.getElementById('musica');
+        player.play().catch(error => {
+            console.log("Autoplay bloqueado. Aguardando interação.");
+        });
     }
+    
+    // Inicia a música no primeiro clique na tela
     document.body.addEventListener('click', tocarMusica, { once: true });
 
     const dataInicio = new Date(2026, 3, 11, 23, 4, 0); 
