@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Momento Especial 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-rosa-bebe: #fde2e4;
+            --pink-accent: #ff7096;
+            --dark-pink: #590d22;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background-color: var(--bg-rosa-bebe);
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_portrait.png');
+            background-size: 90px;
+            background-repeat: repeat;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            color: var(--dark-pink);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #ff4d6d;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            font-weight: 700;
+            background: rgba(253, 226, 228, 0.8);
+            padding: 10px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .foto-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .foto-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .moldura-foto {
+            width: 100%;
+            height: 350px;
+            background-color: #fff0f3;
+            border: 3px dashed var(--pink-accent);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .moldura-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; 
+        }
+
+        .placeholder-texto {
+            color: #ff85a1;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 20px;
+        }
+
+        .placeholder-texto span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .legenda {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-pink);
+            font-style: italic;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            margin-top: 35px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff85a1, #ff4d6d);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+            background: linear-gradient(45deg, #ff7096, #ff0a54);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1>Nosso Momento Lindo 🎀</h1>
+
+        <div class="foto-card">
+            <div class="moldura-foto">
+                <img src="SUA_FOTO_AQUI.jpg" alt="Nossa Foto" id="foto-principal">
+                
+                <div class="placeholder-texto" id="placeholder">
+                    <span>🐱🎀</span>
+                    Coloque sua foto preferida aqui!
+                </div>
+            </div>
+            
+            <p class="legenda">"O meu 'eu te amo' mais sincero é todo seu, Jhenni. Sempre foi você. 🧸"</p>
+        </div>
+
+        <a href="index.html" class="botao-voltar">✨ Voltar para a Home</a>
+
+    </div>
+
+    <script>
+        const img = document.getElementById('foto-principal');
+        const placeholder = document.getElementById('placeholder');
+
+        if (img.getAttribute('src') !== 'SUA_FOTO_AQUI.jpg' && img.getAttribute('src') !== '') {
+            img.style.display = 'block';
+            placeholder.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
