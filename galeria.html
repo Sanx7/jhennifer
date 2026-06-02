@@ -50,6 +50,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             text-align: center;
+            cursor: pointer; /* Transforma o mouse em mãozinha indicando clique */
         }
 
         .foto-card:hover {
@@ -78,6 +79,62 @@
             padding: 10px 20px;
             border-radius: 20px;
             font-weight: bold;
+        }
+
+        /* --- ESTILOS DO MODAL (TELA CHEIA) --- */
+        .lightbox {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 999; /* Fica acima de tudo */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Fundo preto semi-transparente */
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Classe que ativa o efeito visual */
+        .lightbox.ativo {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.ativo .lightbox-img {
+            transform: scale(1); /* Efeito suave de abertura */
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lightbox-legend {
+            position: absolute;
+            bottom: 40px;
+            color: white;
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            width: 80%;
         }
     </style>
 </head>
@@ -122,16 +179,56 @@
             <p class="legenda">depressiva</p>
         </div>
 
-        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto"><p class="legenda">Legenda da foto 7.</p></div>
-        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto"><p class="legenda">Legenda da foto 8.</p></div>
-        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto"><p class="legenda">Legenda da foto 9.</p></div>
-        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto"><p class="legenda">Legenda da foto 10.</p></div>
-        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto"><p class="legenda">Legenda da foto 11.</p></div>
-        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto"><p class="legenda">Legenda da foto 12.</p></div>
+        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto 7"><p class="legenda">Legenda da foto 7.</p></div>
+        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto 8"><p class="legenda">Legenda da foto 8.</p></div>
+        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto 9"><p class="legenda">Legenda da foto 9.</p></div>
+        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto 10"><p class="legenda">Legenda da foto 10.</p></div>
+        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto 11"><p class="legenda">Legenda da foto 11.</p></div>
+        <div class="foto-card"><img src="https://via.placeholder.com/300" alt="Foto 12"><p class="legenda">Legenda da foto 12.</p></div>
 
     </div>
 
     <a href="index.html" class="botao-voltar">Voltar para a Home</a>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <p class="lightbox-legend" id="lightbox-legend"></p>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.foto-card');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxLegend = document.getElementById('lightbox-legend');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        // Abrir imagem ao clicar no card
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                const legenda = card.querySelector('.legenda');
+                
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxLegend.textContent = legenda.textContent;
+                
+                lightbox.classList.add('ativo');
+            });
+        });
+
+        // Fechar ao clicar no 'X'
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('ativo');
+        });
+
+        // Fechar ao clicar no fundo escuro (fora da imagem)
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('ativo');
+            }
+        });
+    </script>
 
 </body>
 </html>
