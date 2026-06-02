@@ -18,24 +18,24 @@ body {
     cursor: pointer;
 }
 
-/* O corpo do envelope */
+/* O corpo do envelope (AUMENTADO para 450x300) */
 .envelope {
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 450px;
+    height: 300px;
     background-color: #f08080; /* Um rosa mais escuro para o envelope */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* A folha/carta que está dentro */
+/* A folha/carta que está dentro (AUMENTADA proporcionalmente) */
 .letter {
     position: absolute;
     bottom: 0;
-    left: 10px;
-    width: 280px;
-    height: 180px;
+    left: 15px;
+    width: 420px;
+    height: 270px;
     background: white;
     transition: transform 0.8s ease-in-out;
     z-index: 2;
@@ -51,27 +51,27 @@ body {
     object-fit: contain; /* Faz a foto caber inteira no papel */
 }
 
-/* Aba superior (a tampa) */
+/* Aba superior / tampa (Recalculada para o novo tamanho) */
 .top {
     position: absolute;
     top: 0;
     left: 0;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-top: 110px solid #f08080; /* Cor da tampa */
+    border-left: 225px solid transparent;
+    border-right: 225px solid transparent;
+    border-top: 165px solid #f08080; /* Cor da tampa */
     transform-origin: top;
     transition: transform 0.4s ease-in-out;
     z-index: 4;
 }
 
-/* As abas laterais e inferior para dar profundidade */
+/* As abas laterais e inferior (Recalculadas para o novo tamanho) */
 .front {
     position: absolute;
     bottom: 0;
     left: 0;
-    border-left: 150px solid #f49797;
-    border-right: 150px solid #f49797;
-    border-bottom: 110px solid #f07070;
+    border-left: 225px solid #f49797;
+    border-right: 225px solid #f49797;
+    border-bottom: 165px solid #f07070;
     z-index: 3;
 }
 
@@ -83,7 +83,7 @@ body {
 }
 
 .envelope-wrapper:hover .letter {
-    transform: translateY(-130px); /* A carta sobe */
+    transform: translateY(-200px); /* Aumentado para a carta maior subir o suficiente */
     z-index: 5; /* A carta fica na frente de tudo */
 }
 
