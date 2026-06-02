@@ -125,6 +125,19 @@
 
         #timer { font-weight: bold; font-size: 1.4rem; color: var(--primary-pink); }
         
+        /* NOVO ESTILO DO PAINEL DE CALL */
+        .call-timer {
+            font-size: 1.25rem;
+            color: #c9184a;
+            font-weight: 600;
+            background: rgba(255, 182, 193, 0.3);
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+        
         #msg-box { 
             min-height: 70px; 
             font-style: italic; 
@@ -162,6 +175,11 @@
     </div>
 
     <div class="card">
+        <h3 style="margin-top:0">Horas em Call com Você 📞</h3>
+        <div class="call-timer">50horas4minutos28segundos</div>
+    </div>
+
+    <div class="card">
         <h3 style="margin-top:0">Desafio para Você 🧠</h3>
         <p style="font-size: 0.9rem; margin-bottom: 15px;">Será que você consegue acertar?</p>
         
@@ -176,7 +194,7 @@
     </div>
 
     <div class="card">
-        <h3 style="margin-top:0">Um mimo para você 💌</h3>
+        <h3 style="margin-top:0">Coisas que você talvez queira ler 💌</h3>
         <div id="msg-box">Clique abaixo para uma surpresa...</div>
         <button class="btn" onclick="sortearMensagem()">Ver Frase</button>
     </div>
