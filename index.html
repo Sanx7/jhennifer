@@ -42,7 +42,7 @@
             background: linear-gradient(45deg, #ff1744, #b71c1c);
         }
 
-        /* NOVO ESTILO DO BOTÃO DA CARTA */
+        /* NOVO ESTILO DO BOTÃO DA SURPRESA */
         .botao-carta {
             display: inline-block;
             padding: 15px 30px;
@@ -67,6 +67,34 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
             background: linear-gradient(45deg, #ff7096, #ff0a54);
+        }
+
+        /* ESTILO EXCLUSIVO DO BOTÃO HELLO KITTY */
+        .botao-hellokitty {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #590d22;
+            background: linear-gradient(45deg, #fff0f3, #ffb3c1);
+            border: 2px solid #ff7096;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 112, 150, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 15px;
+        }
+
+        .botao-hellokitty:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 112, 150, 0.4);
+            background: linear-gradient(45deg, #ffb3c1, #ff85a1);
+            color: white;
         }
 
         body {
@@ -210,13 +238,16 @@
     </a>
 
     <a href="carta.html" class="botao-carta">
-        ✉ Abrir minha cartinha especial
+        ✉ Abrir minha surpresa
+    </a>
+
+    <a href="hellokitty.html" class="botao-hellokitty">
+        🎀 Ir para a cartinha da Hello Kitty
     </a>
 
 </div>
 
 <script>
-    // Função atualizada para tocar o arquivo m4a
     function tocarMusica() {
         const player = document.getElementById('musica');
         player.play().catch(error => {
@@ -224,7 +255,6 @@
         });
     }
     
-    // Inicia a música no primeiro clique na tela
     document.body.addEventListener('click', tocarMusica, { once: true });
 
     const dataInicio = new Date(2026, 3, 11, 23, 4, 0); 
@@ -265,6 +295,10 @@
         msgBox.innerText = mensagens[r];
         chuva('✨');
         tocarMusica();
+    }
+
+    function lluvia(emoji) { // Mantendo compatibilidade com o sistema interno de partículas
+        chuva(emoji);
     }
 
     function chuva(emoji) {
