@@ -7,88 +7,130 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
 }
 
 .container {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .envelope-wrapper {
     position: relative;
     cursor: pointer;
+    /* Usando margem dinâmica para dar espaço quando a carta subir */
+    margin-top: 100px; 
 }
 
-/* O corpo do envelope (AUMENTADO para 450x300) */
+/* O corpo do envelope - AGORA RESPONSIVO E BEM MAIOR */
 .envelope {
     position: relative;
-    width: 450px;
-    height: 300px;
-    background-color: #f08080; /* Um rosa mais escuro para o envelope */
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    width: 550px;
+    height: 360px;
+    max-width: 90vw; /* Garante que não vai cortar nas bordas do celular */
+    background-color: #f08080; 
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* A folha/carta que está dentro (AUMENTADA proporcionalmente) */
+/* A folha/carta que está dentro */
 .letter {
     position: absolute;
     bottom: 0;
-    left: 15px;
-    width: 420px;
-    height: 270px;
+    left: 4%;
+    width: 92%;
+    height: 90%;
     background: white;
     transition: transform 0.8s ease-in-out;
     z-index: 2;
     overflow: hidden;
-    padding: 10px;
+    padding: 15px;
     box-sizing: border-box;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    border-radius: 4px;
 }
 
 .letter img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Faz a foto caber inteira no papel */
+    object-fit: contain; 
 }
 
-/* Aba superior / tampa (Recalculada para o novo tamanho) */
+/* Aba superior / tampa */
 .top {
     position: absolute;
     top: 0;
     left: 0;
-    border-left: 225px solid transparent;
-    border-right: 225px solid transparent;
-    border-top: 165px solid #f08080; /* Cor da tampa */
+    width: 0;
+    height: 0;
+    border-left: 275px solid transparent;
+    border-right: 275px solid transparent;
+    border-top: 200px solid #f08080; 
     transform-origin: top;
     transition: transform 0.4s ease-in-out;
     z-index: 4;
 }
 
-/* As abas laterais e inferior (Recalculadas para o novo tamanho) */
+/* As abas laterais e inferior */
 .front {
     position: absolute;
     bottom: 0;
     left: 0;
-    border-left: 225px solid #f49797;
-    border-right: 225px solid #f49797;
-    border-bottom: 165px solid #f07070;
+    width: 0;
+    height: 0;
+    border-left: 275px solid #f49797;
+    border-right: 275px solid #f49797;
+    border-bottom: 200px solid #f07070;
     z-index: 3;
 }
 
-/* ANIMAÇÃO AO PASSAR O MOUSE (HOVER) */
-
+/* ANIMAÇÃO AO PASSAR O MOUSE / CLICAR */
 .envelope-wrapper:hover .top {
     transform: rotateX(180deg);
-    z-index: 1; /* A tampa vai para trás quando abre */
+    z-index: 1; 
 }
 
 .envelope-wrapper:hover .letter {
-    transform: translateY(-200px); /* Aumentado para a carta maior subir o suficiente */
-    z-index: 5; /* A carta fica na frente de tudo */
+    transform: translateY(-240px); /* A carta sobe bastante para se destacar */
+    z-index: 5; 
 }
 
 .instrucao {
-    margin-top: 50px;
+    margin-top: 60px;
     color: #d17a7a;
     font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* --- AJUSTES EXCLUSIVOS PARA CELULAR (TELAS PEQUENAS) --- */
+@media (max-width: 600px) {
+    .envelope {
+        height: 58vw; /* Mantém a proporção perfeita do envelope no celular */
+    }
+    
+    .top {
+        border-left: 45vw solid transparent;
+        border-right: 45vw solid transparent;
+        border-top: 33vw solid #f08080;
+    }
+    
+    .front {
+        border-left: 45vw solid #f49797;
+        border-right: 45vw solid #f49797;
+        border-bottom: 33vw solid #f07070;
+    }
+
+    .envelope-wrapper:hover .letter {
+        transform: translateY(-45vw); /* Sobe proporcionalmente ao tamanho da tela */
+    }
+    
+    .instrucao {
+        margin-top: 40px;
+        font-size: 0.9rem;
+    }
 }
