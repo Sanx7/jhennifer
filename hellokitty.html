@@ -137,7 +137,7 @@
 
         <div class="foto-card">
             <div class="moldura-foto">
-                <img src="SUA_FOTO_AQUI.jpg" alt="Nossa Foto" id="foto-principal">
+                <img src="cartinha.png" alt="Nossa Foto" id="foto-principal">
                 
                 <div class="placeholder-texto" id="placeholder">
                     <span>🐱🎀</span>
@@ -156,7 +156,12 @@
         const img = document.getElementById('foto-principal');
         const placeholder = document.getElementById('placeholder');
 
-        if (img.getAttribute('src') !== 'SUA_FOTO_AQUI.jpg' && img.getAttribute('src') !== '') {
+        // Ajustado o script para reconhecer o nome da sua nova imagem
+        if (img.getAttribute('src') !== 'cartinha.png' && img.getAttribute('src') !== '') {
+            img.style.display = 'block';
+            placeholder.style.display = 'none';
+        } else {
+            // Garante que a imagem apareça se o nome for exatamente cartinha.png
             img.style.display = 'block';
             placeholder.style.display = 'none';
         }
