@@ -60,6 +60,7 @@ body {
     height: 100%;
     object-fit: contain; /* Garante que NADA da imagem seja cortado */
     display: block;
+    cursor: zoom-in; /* Muda o ponteiro para uma lupa de zoom ao passar na foto */
 }
 
 /* Aba superior / tampa */
@@ -134,4 +135,53 @@ body {
         margin-top: 40px;
         font-size: 0.9rem;
     }
+}
+
+/* --- ESTILOS PARA A TELA CHEIA (MODAL) --- */
+
+/* O fundo escuro que cobre a tela toda */
+.modal {
+    display: none; /* Começa escondido, controlado pelo JS */
+    position: fixed;
+    z-index: 9999; /* Fica por cima de absolutamente tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo preto com 90% de opacidade */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+/* A imagem em tamanho grande */
+.modal-conteudo {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    animation: zoomIn 0.3s ease-in-out; /* Efeito suave de abertura */
+}
+
+/* O botão de fechar (X) */
+.fechar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.fechar:hover {
+    color: #FFD1DC; /* Muda para o rosa bebê ao passar o mouse */
+}
+
+/* Animação para a foto abrir com zoom fluido */
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
