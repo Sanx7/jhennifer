@@ -67,8 +67,9 @@
 
         .moldura-foto {
             width: 100%;
-            height: 350px;
-            background-color: #fff0f3;
+            height: auto;
+            min-height: 350px;
+            background-color: transparent;
             border: 3px dashed var(--pink-accent);
             border-radius: 20px;
             display: flex;
@@ -80,11 +81,26 @@
             box-sizing: border-box;
         }
 
+        /* Torna o link da foto um bloco que ocupa todo o espaço */
+        .link-foto {
+            width: 100%;
+            display: block;
+            cursor: pointer; /* Transforma a seta do mouse em mãozinha */
+        }
+
         .moldura-foto img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            max-height: 450px;
+            object-fit: contain;
             display: none; 
+            border-radius: 17px;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Efeito suave de opacidade ao passar o mouse para indicar que dá pra clicar */
+        .moldura-foto img:hover {
+            opacity: 0.9;
         }
 
         .placeholder-texto {
@@ -137,7 +153,10 @@
 
         <div class="foto-card">
             <div class="moldura-foto">
-                <img src="cartinha.png" alt="Nossa Foto" id="foto-principal">
+                
+                <a href="cartinha.png" target="_blank" class="link-foto">
+                    <img src="cartinha.png" alt="Nossa Foto" id="foto-principal">
+                </a>
                 
                 <div class="placeholder-texto" id="placeholder">
                     <span>🐱🎀</span>
@@ -156,12 +175,12 @@
         const img = document.getElementById('foto-principal');
         const placeholder = document.getElementById('placeholder');
 
-        // Ajustado o script para reconhecer o nome da sua nova imagem
-        if (img.getAttribute('src') !== 'cartinha.png' && img.getAttribute('src') !== '') {
+        img.onload = function() {
             img.style.display = 'block';
             placeholder.style.display = 'none';
-        } else {
-            // Garante que a imagem apareça se o nome for exatamente cartinha.png
+        };
+
+        if (img.complete) {
             img.style.display = 'block';
             placeholder.style.display = 'none';
         }
